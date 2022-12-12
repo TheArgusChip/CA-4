@@ -47,8 +47,12 @@ namespace CA_3_Final
                 {
                     Regex regex = new Regex($@"\d+{operation}\d+");
 
-                    var test = regex.Replace(info, new Calculator(new Parser(regex.Matches(info)[0].Value)).ResultLine.ToString());
-                    return Cycle(test);
+                    foreach (Match match in regex.Matches(info))
+                    {
+                        info = info.Replace(match.Value, new Calculator(new Parser(match.Value)).ResultLine.ToString());
+                    }
+                    
+                    return Cycle(info);
                 }
             }
 

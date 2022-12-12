@@ -36,13 +36,7 @@
         {
             get
             {
-                var converted = _numbers.Select(number => int.Parse(number).ToBinary()).ToList();
-
-                var lengths = converted.Select(element => element.Length).ToList();
-
-                var minIndex = lengths.IndexOf(lengths.Min());
-
-                converted[minIndex] += new string('0', Math.Abs(converted[0].Length - converted[1].Length));
+                var converted = _numbers.Select(number => number.ToEightBitBinary()).ToList();
 
                 var test = GetShuffle(converted);
 

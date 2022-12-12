@@ -13,11 +13,11 @@
     public static string ToEightBitBinary(this string source)
     {
         var result = int.Parse(source).ToBinary();
-        for (int i = source.Length; i < 8; i++)
+        var resultCopy = result;
+        for (int i = resultCopy.Length; i < 8; i++)
         {
             result += "0";
         }
-
         return result;
     }
 
